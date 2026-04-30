@@ -1,0 +1,16 @@
+name: validate terraform
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+      - name: terraform init
+        run: terraform init
+      - name: terraform validate
+        run: terraform validate
